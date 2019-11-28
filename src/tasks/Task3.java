@@ -4,7 +4,9 @@ import common.Person;
 import common.Task;
 
 import java.time.Instant;
-import java.util.*;
+import java.util.List;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.stream.Collectors;
 
 /*
@@ -15,10 +17,11 @@ public class Task3 implements Task {
 
   // !!! Редактируйте этот метод !!!
   private List<Person> sort(Collection<Person> persons) {
-// Рискну предположить, что сложность будет O(log(n)³), но надеюсь, что это работает оптимальнее.
-    return persons.stream().sorted(Comparator.comparing(Person::getSecondName)
-            .thenComparing(Person::getFirstName)
-            .thenComparing(Person::getCreatedAt))
+// O(log(n))
+    return persons.stream()
+            .sorted(Comparator.comparing(Person::getSecondName)
+              .thenComparing(Person::getFirstName)
+              .thenComparing(Person::getCreatedAt))
             .collect(Collectors.toList());
   }
 

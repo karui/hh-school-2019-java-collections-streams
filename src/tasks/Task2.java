@@ -4,8 +4,12 @@ import common.Person;
 import common.Task;
 
 import java.time.Instant;
-import java.util.*;
+import java.util.List;
+import java.util.Set;
+import java.util.Collection;
+import java.util.Comparator;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /*
 Задача 2
@@ -21,15 +25,10 @@ public class Task2 implements Task {
                                                       int limit) {
 
 // Сложность O(log(n)) т.к. sorted
-    var personsList = new ArrayList<Person>() {{
-      addAll(persons1);
-      addAll(persons2);
-    }}.stream()
+    return Stream.concat(persons1.stream(), persons2.stream())
             .sorted(Comparator.comparing(Person::getCreatedAt))
             .limit(limit)
             .collect(Collectors.toList());
-
-    return personsList;
   }
 
   @Override
