@@ -24,7 +24,7 @@ public class Task2 implements Task {
                                                       Collection<Person> persons2,
                                                       int limit) {
 
-// Сложность O(log(n)) т.к. sorted
+// Сложность O(n⋅log(n)) т.к. sorted
     return Stream.concat(persons1.stream(), persons2.stream())
             .sorted(Comparator.comparing(Person::getCreatedAt))
             .limit(limit)
